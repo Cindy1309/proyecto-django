@@ -2991,7 +2991,7 @@ body > .jGrowl {
   background: none;
   display: -moz-inline-box;
   display: inline-block;
-  *display: inline;
+  display: inline;
   zoom: 1;
   margin: 0;
   vertical-align: top;
@@ -3247,7 +3247,7 @@ body > .jGrowl {
   width: 100%;
   margin-top: 0;
   opacity: 0;
-  filter: alpha(opacity:0);
+
   position: absolute;
   top: 0;
   right: 0;
@@ -3263,7 +3263,7 @@ body > .jGrowl {
   display: inline-block;
   vertical-align: middle;
   zoom: 1;
-  *display: inline;
+  display: inline;
 }
 .uploader.disabled span.action {
   color: #aaa;
@@ -4141,7 +4141,7 @@ tr.shown td.details-control {
   clear: both;
 }
 .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
-  *margin-top: -1px;
+  margin-top: -1px;
   -webkit-overflow-scrolling: touch;
 }
 .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody th > div.dataTables_sizing,
@@ -4539,7 +4539,7 @@ tr.shown td.details-control {
 }
 .ui-slider-horizontal .ui-slider-range {
   top: -1px;
-  height: 100^;
+  height: 100px;
 }
 .ui-slider-horizontal .ui-slider-range-min {
   left: 0;
