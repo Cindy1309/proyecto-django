@@ -9,18 +9,25 @@
 
 {% load static %}
 
+<!-- CSS -->
 <link href="{% static 'inicio/css/bootstrap.min.css' %}" rel="stylesheet">
-<link href="{% static 'inicio/css/londinium-theme.css' %}" rel="stylesheet">
 <link href="{% static 'inicio/css/styles.css' %}" rel="stylesheet">
 <link href="{% static 'inicio/css/icons.css' %}" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&display=swap" rel="stylesheet">
+<!-- ❌ QUITADO londinium-theme.css (pesado e innecesario si no lo usas) -->
+<!-- <link href="{% static 'inicio/css/londinium-theme.css' %}" rel="stylesheet"> -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" defer></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js" defer></script>
+<!-- Google Fonts optimizado -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
 
+<!-- JS optimizado -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
 <script src="{% static 'inicio/js/bootstrap.min.js' %}" defer></script>
-<script src="{% static 'inicio/js/application.js' %}" defer></script>
+
+<!-- ❌ QUITADO porque rompe y no lo necesitas -->
+<!-- <script src="{% static 'inicio/js/application.js' %}" defer></script> -->
 
 </head>
 
@@ -31,7 +38,6 @@
 	<!-- NAV accesible -->
 	<nav class="sidebar" aria-label="Menú principal">
 
-		<!-- Usuario -->
 		<div class="user-menu dropdown">
 			<a href="#" aria-label="Perfil de usuario">
 				<img src="{% block imagen %}{% endblock %}" alt="Imagen de usuario">
@@ -59,7 +65,6 @@
 
 	{% block encavezado %}{% endblock %}
 
-	<!-- Breadcrumb accesible -->
 	<nav aria-label="Ruta de navegación">
 		<ul class="breadcrumb">
 			<li>
@@ -67,7 +72,7 @@
 					{% if request.path == '/' %}
 						Principal
 					{% else %}
-						Principal {{ request.path }}
+						Principal
 					{% endif %}
 				</a>
 			</li>
