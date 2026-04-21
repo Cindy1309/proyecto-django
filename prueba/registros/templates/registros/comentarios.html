@@ -2,58 +2,62 @@
 
 {% block titulo %}Comentarios{% endblock %}
 
-{% block imagen%}
-	{%load static%}
-	{%static 'inicio/images/home.png'%}
-{% endblock%}	
+{% block imagen %}
+	{% load static %}
+	{% static 'inicio/images/home.png' %}
+{% endblock %}	
 
-{%block span%}Principal <span>DSM</span>{%endblock%}
+{% block span %}Comentarios <span>DSM</span>{% endblock %}
 
+{% block encavezado %}
+<div class="page-header">
+	<div class="page-title">
+		<h1>Comentarios</h1>
+		<p>Lista de comentarios</p>
+	</div>
+</div>
+{% endblock %}
 
+{% block contenido %}
 
+<table class="table table-bordered table-striped">
 
-			{% block encavezado%}
-			<!--Encabezdo -->
-			<div class="page-header">
-				<div class="page-title">
-					<h3>Comentarios
-				    <small>Lista de comentarios </small></h3>
-				</div>
+	<caption>Listado de comentarios de usuarios</caption>
 
-				
-			</div>
-			<!-- /Encabezado-->
-			 {%endblock%}
+	<thead>
+		<tr>
+			<th scope="col">Usuario</th>
+			<th scope="col">Mensaje</th>
+			<th scope="col">Editar</th>
+			<th scope="col">Eliminar</th>
+		</tr>
+	</thead>
 
-			 
+	<tbody>
+		{% for consultas in consulta %}
+		<tr>	
+			<td class="text-semibold">{{ consultas.usuario }}</td>
+			<td>{{ consultas.mensaje }}</td>
 
+			<td class="text-center">
+				<a href="{% url 'ConsultaIndividual' consultas.id %}" 
+				   class="btn btn-primary"
+				   aria-label="Editar comentario de {{ consultas.usuario }}">
+				   Editar
+				</a>
+			</td>
 
-			 {% block contenido %}
-			 <!--Tabla de alumnos-->
-			 <table class="table table-bordered table-striped">
-				<thead>
-					<tr>
-						<th>Usurio</th>
-						<th>Mensaje</th>
-						<th></th>
-						<th></th>
-						
-					</tr>
-				</thead>
-				<tbody>
-					{% for consultas in consulta %}
-					<tr>	
-						
-						<td class="text-semibold">{{consultas.usuario}}</td>
-						<td class="muted">{{consultas.mensaje}}</td>
-						<td class="text-center">
-							<a href="{% url 'ConsultaIndividual' consultas.id %}" class="btn btn-danger">Editar</a></td>
-                        <td class="text-center">
-                            <a href="{% url 'Eliminar' consultas.id %}" class="btn btn-danger">Eliminar</a>
-                        </td>
-					</tr>
-					{% endfor %}
-				</tbody>
-			 </table>
-			 <!--/Tabla de alumnos-->
-			 {% endblock %}
+			<td class="text-center">
+				<a href="{% url 'Eliminar' consultas.id %}" 
+				   class="btn btn-danger"
+				   aria-label="Eliminar comentario de {{ consultas.usuario }}">
+				   Eliminar
+				</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+
+</table>
+
+{% endblock %}

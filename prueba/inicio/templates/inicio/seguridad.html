@@ -1,26 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Búsqueda segura</title>
 </head>
 <body>
-    <form method="GET">
-        Nombre: 
-        <input type="text" name="nombre"/>
-        <input type="submit" value="Buscar"/>
+
+    <h1>Buscar usuario</h1>
+
+    <form method="get" aria-label="Formulario de búsqueda">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <button type="submit">Buscar</button>
     </form>
-    <h2>Resultado: {{ nombre|safe }}</h2>
 
-    <!--Busqueda-->
-    <script type="application/javascript">
-        var busqueda = new URLSearchParams(document.location.search);
-        if(busqueda.has("nombre")){
-            document.getElementById("resultado").innerHTML = "Resultado: " + busqueda.get("nombre")
+    <h2 id="resultado">Resultado: {{ nombre }}</h2>
+
+    <!-- Búsqueda segura -->
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const resultado = document.getElementById("resultado");
+
+        if (params.has("nombre")) {
+            resultado.textContent = "Resultado: " + params.get("nombre");
         }
-
     </script>
-    <!--Fin busqueda-->
+
 </body>
 </html>
